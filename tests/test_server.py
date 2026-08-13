@@ -67,10 +67,10 @@ class TestRegistration:
         for tool in await mcp.list_tools():
             expected = EXPECTED_ANNOTATIONS[tool.name]
             actual = (
-                tool.annotations.readOnlyHint,
-                tool.annotations.destructiveHint,
-                tool.annotations.idempotentHint,
-                tool.annotations.openWorldHint,
+                tool.annotations.read_only_hint,
+                tool.annotations.destructive_hint,
+                tool.annotations.idempotent_hint,
+                tool.annotations.open_world_hint,
             )
             assert actual == expected, tool.name
 

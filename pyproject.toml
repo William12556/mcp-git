@@ -1,12 +1,12 @@
 [project]
 name = "mcp-git"
-version = "0.1.0"
+version = "0.1.1"
 description = "A local git MCP server"
 authors = [{name = "William Watson"}]
 license = {text = "MIT"}
 requires-python = ">=3.9"
 dependencies = [
-    "mcp>=1.2.0",
+    "mcp>=2.0.0",
     "GitPython>=3.1.40",
     "pydantic>=2.0.0",
 ]
