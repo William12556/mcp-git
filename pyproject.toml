@@ -1,6 +1,6 @@
 [project]
 name = "mcp-git"
-version = "0.1.1"
+version = "0.1.2"
 description = "A local git MCP server"
 authors = [{name = "William Watson"}]
 license = {text = "MIT"}
