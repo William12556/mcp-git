@@ -11,6 +11,8 @@ Created: 2026 August 13
 [2.1 Development install](<#2.1 development install>)
 [2.2 De-installation](<#2.2 de-installation>)
 [3.0 Configuration](<#3.0 configuration>)
+[3.1 Claude Desktop](<#3.1 claude desktop>)
+[3.2 Claude Code](<#3.2 claude code>)
 [4.0 Tools](<#4.0 tools>)
 [Version History](<#version history>)
 
@@ -74,7 +76,15 @@ For a development install, remove the cloned repository directory in place of th
 
 ## 3.0 Configuration
 
-Add mcp-git to your MCP client's configuration, pointing at the installed console script. For Claude Desktop (`claude_desktop_config.json`):
+Add mcp-git to your MCP client's configuration, pointing at the installed console script. Use the full path printed by the install script (or, for a development install, the venv you created). No startup arguments are needed — every tool call takes its own `repo_path`, so one server instance can work with any repository on your machine.
+
+[Return to Table of Contents](<#table of contents>)
+
+---
+
+### 3.1 Claude Desktop
+
+Add to `claude_desktop_config.json`:
 
 ```json
 {
@@ -86,7 +96,17 @@ Add mcp-git to your MCP client's configuration, pointing at the installed consol
 }
 ```
 
-Use the full path printed by the install script (or, for a development install, the venv you created). No startup arguments are needed — every tool call takes its own `repo_path`, so one server instance can work with any repository on your machine.
+[Return to Table of Contents](<#table of contents>)
+
+---
+
+### 3.2 Claude Code
+
+Register the server with the `claude mcp add` command:
+
+```bash
+claude mcp add --transport stdio git -- /Users/<you>/.local/share/mcp-git/venv/bin/mcp-git
+```
 
 [Return to Table of Contents](<#table of contents>)
 
@@ -123,6 +143,7 @@ Every tool operates only on the repository at the `repo_path` you give it — no
 | 0.2 | 2026-08-13 | Added installation, configuration, and tool reference now that the server is implemented |
 | 0.3 | 2026-08-13 | Replaced git-clone installation with the curl-piped bin/install.sh; clone retained only for §2.1 Development install |
 | 0.4 | 2026-08-13 | Added §2.2 De-installation |
+| 0.5 | 2026-08-13 | Split §3.0 Configuration into §3.1 Claude Desktop and §3.2 Claude Code |
 
 ---
 
