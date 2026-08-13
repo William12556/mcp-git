@@ -401,6 +401,7 @@ implement ai/workspace/prompt/prompt-8aec2f46-mcp_git_implementation.md and clos
 | Version | Date | Description |
 |---|---|---|
 | 0.1 | 2026-08-13 | Initial combined T04 prompt covering both Tier 3 components, pending human review |
+| 0.2 | 2026-08-13 | Implemented by Claude Code; all success criteria met (70 pytest tests pass); prompt closed and moved to `ai/workspace/prompt/closed/`. Report: `ai/workspace/report/report-8aec2f46-mcp_git_implementation.md` |
 
 ---
 
