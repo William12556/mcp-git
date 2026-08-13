@@ -9,6 +9,7 @@ Created: 2026 August 13
 [1.0 Overview](<#1.0 overview>)
 [2.0 Installation](<#2.0 installation>)
 [2.1 Development install](<#2.1 development install>)
+[2.2 De-installation](<#2.2 de-installation>)
 [3.0 Configuration](<#3.0 configuration>)
 [4.0 Tools](<#4.0 tools>)
 [Version History](<#version history>)
@@ -50,6 +51,22 @@ python3 -m venv venv
 source venv/bin/activate
 pip install -e .[dev]
 ```
+
+[Return to Table of Contents](<#table of contents>)
+
+---
+
+### 2.2 De-installation
+
+Remove the install directory:
+
+```bash
+rm -rf ~/.local/share/mcp-git
+```
+
+If the `MCP_GIT_HOME` environment variable was set to a non-default location during installation, remove that directory instead. Then remove the `mcp-git` entry from your MCP client configuration (§3.0).
+
+For a development install, remove the cloned repository directory in place of the above.
 
 [Return to Table of Contents](<#table of contents>)
 
@@ -105,6 +122,7 @@ Every tool operates only on the repository at the `repo_path` you give it — no
 | 0.1 | 2026-08-13 | Initial skeleton (P01 project initialisation) |
 | 0.2 | 2026-08-13 | Added installation, configuration, and tool reference now that the server is implemented |
 | 0.3 | 2026-08-13 | Replaced git-clone installation with the curl-piped bin/install.sh; clone retained only for §2.1 Development install |
+| 0.4 | 2026-08-13 | Added §2.2 De-installation |
 
 ---
 
