@@ -21,7 +21,7 @@ project_info:
   version: "0.1"
   date: "2026-08-13"
   author: "William Watson"
-  status: "active"
+  status: "approved"
 
 naming_conventions:
   package_name: "mcp_git"
@@ -266,6 +266,11 @@ version_history:
     author: "William Watson"
     changes:
       - "Initial requirements baseline: 12 functional (full tool parity), 4 non-functional, 4 architectural requirements"
+  - version: "0.2"
+    date: "2026-08-13"
+    author: "William Watson"
+    changes:
+      - "Requirements baseline approved; status changed active -> approved (P10 §1.11.4)"
 
 metadata:
   copyright: "Copyright (c) 2026 William Watson. MIT License."
@@ -282,6 +287,7 @@ metadata:
 | Version | Date | Description |
 |---|---|---|
 | 0.1 | 2026-08-13 | Initial requirements baseline (P10 Requirements) |
+| 0.2 | 2026-08-13 | Baseline approved; status set to approved |
 
 ---
 
