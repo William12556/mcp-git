@@ -1,6 +1,6 @@
 """MCP Tool Handler Layer for the mcp-git server.
 
-Registers the 12 git tools with FastMCP, validates their input with Pydantic
+Registers the 12 git tools with MCPServer, validates their input with Pydantic
 models, dispatches to the Git Operations Layer, and formats structured
 results and errors.
 
@@ -25,7 +25,7 @@ import json
 import logging
 from typing import Any, Callable, List, Optional
 
-from mcp.server.fastmcp import FastMCP
+from mcp.server import MCPServer
 from mcp.types import ToolAnnotations
 from pydantic import BaseModel, Field
 
@@ -41,7 +41,7 @@ __all__ = ["mcp", "main"]
 
 logger = logging.getLogger(__name__)
 
-mcp = FastMCP("mcp-git")
+mcp = MCPServer("mcp-git")
 
 GENERIC_ERROR = "Error: an unexpected error occurred"
 
@@ -191,10 +191,10 @@ class GitInitInput(BaseModel):
 @mcp.tool(
     name="git_status",
     annotations=ToolAnnotations(
-        readOnlyHint=True,
-        destructiveHint=False,
-        idempotentHint=True,
-        openWorldHint=False,
+        read_only_hint=True,
+        destructive_hint=False,
+        idempotent_hint=True,
+        open_world_hint=False,
     ),
 )
 async def git_status(params: GitStatusInput) -> str:
@@ -225,10 +225,10 @@ async def git_status(params: GitStatusInput) -> str:
 @mcp.tool(
     name="git_diff_unstaged",
     annotations=ToolAnnotations(
-        readOnlyHint=True,
-        destructiveHint=False,
-        idempotentHint=True,
-        openWorldHint=False,
+        read_only_hint=True,
+        destructive_hint=False,
+        idempotent_hint=True,
+        open_world_hint=False,
     ),
 )
 async def git_diff_unstaged(params: GitDiffUnstagedInput) -> str:
@@ -253,10 +253,10 @@ async def git_diff_unstaged(params: GitDiffUnstagedInput) -> str:
 @mcp.tool(
     name="git_diff_staged",
     annotations=ToolAnnotations(
-        readOnlyHint=True,
-        destructiveHint=False,
-        idempotentHint=True,
-        openWorldHint=False,
+        read_only_hint=True,
+        destructive_hint=False,
+        idempotent_hint=True,
+        open_world_hint=False,
     ),
 )
 async def git_diff_staged(params: GitDiffStagedInput) -> str:
@@ -281,10 +281,10 @@ async def git_diff_staged(params: GitDiffStagedInput) -> str:
 @mcp.tool(
     name="git_diff",
     annotations=ToolAnnotations(
-        readOnlyHint=True,
-        destructiveHint=False,
-        idempotentHint=True,
-        openWorldHint=False,
+        read_only_hint=True,
+        destructive_hint=False,
+        idempotent_hint=True,
+        open_world_hint=False,
     ),
 )
 async def git_diff(params: GitDiffInput) -> str:
@@ -311,10 +311,10 @@ async def git_diff(params: GitDiffInput) -> str:
 @mcp.tool(
     name="git_log",
     annotations=ToolAnnotations(
-        readOnlyHint=True,
-        destructiveHint=False,
-        idempotentHint=True,
-        openWorldHint=False,
+        read_only_hint=True,
+        destructive_hint=False,
+        idempotent_hint=True,
+        open_world_hint=False,
     ),
 )
 async def git_log(params: GitLogInput) -> str:
@@ -341,10 +341,10 @@ async def git_log(params: GitLogInput) -> str:
 @mcp.tool(
     name="git_show",
     annotations=ToolAnnotations(
-        readOnlyHint=True,
-        destructiveHint=False,
-        idempotentHint=True,
-        openWorldHint=False,
+        read_only_hint=True,
+        destructive_hint=False,
+        idempotent_hint=True,
+        open_world_hint=False,
     ),
 )
 async def git_show(params: GitShowInput) -> str:
@@ -371,10 +371,10 @@ async def git_show(params: GitShowInput) -> str:
 @mcp.tool(
     name="git_branch",
     annotations=ToolAnnotations(
-        readOnlyHint=True,
-        destructiveHint=False,
-        idempotentHint=True,
-        openWorldHint=False,
+        read_only_hint=True,
+        destructive_hint=False,
+        idempotent_hint=True,
+        open_world_hint=False,
     ),
 )
 async def git_branch(params: GitBranchInput) -> str:
@@ -401,10 +401,10 @@ async def git_branch(params: GitBranchInput) -> str:
 @mcp.tool(
     name="git_create_branch",
     annotations=ToolAnnotations(
-        readOnlyHint=False,
-        destructiveHint=False,
-        idempotentHint=False,
-        openWorldHint=False,
+        read_only_hint=False,
+        destructive_hint=False,
+        idempotent_hint=False,
+        open_world_hint=False,
     ),
 )
 async def git_create_branch(params: GitCreateBranchInput) -> str:
@@ -436,10 +436,10 @@ async def git_create_branch(params: GitCreateBranchInput) -> str:
 @mcp.tool(
     name="git_commit",
     annotations=ToolAnnotations(
-        readOnlyHint=False,
-        destructiveHint=False,
-        idempotentHint=False,
-        openWorldHint=False,
+        read_only_hint=False,
+        destructive_hint=False,
+        idempotent_hint=False,
+        open_world_hint=False,
     ),
 )
 async def git_commit(params: GitCommitInput) -> str:
@@ -468,10 +468,10 @@ async def git_commit(params: GitCommitInput) -> str:
 @mcp.tool(
     name="git_add",
     annotations=ToolAnnotations(
-        readOnlyHint=False,
-        destructiveHint=False,
-        idempotentHint=True,
-        openWorldHint=False,
+        read_only_hint=False,
+        destructive_hint=False,
+        idempotent_hint=True,
+        open_world_hint=False,
     ),
 )
 async def git_add(params: GitAddInput) -> str:
@@ -498,10 +498,10 @@ async def git_add(params: GitAddInput) -> str:
 @mcp.tool(
     name="git_reset",
     annotations=ToolAnnotations(
-        readOnlyHint=False,
-        destructiveHint=True,
-        idempotentHint=True,
-        openWorldHint=False,
+        read_only_hint=False,
+        destructive_hint=True,
+        idempotent_hint=True,
+        open_world_hint=False,
     ),
 )
 async def git_reset(params: GitResetInput) -> str:
@@ -527,10 +527,10 @@ async def git_reset(params: GitResetInput) -> str:
 @mcp.tool(
     name="git_init",
     annotations=ToolAnnotations(
-        readOnlyHint=False,
-        destructiveHint=False,
-        idempotentHint=False,
-        openWorldHint=False,
+        read_only_hint=False,
+        destructive_hint=False,
+        idempotent_hint=False,
+        open_world_hint=False,
     ),
 )
 async def git_init(params: GitInitInput) -> str:
