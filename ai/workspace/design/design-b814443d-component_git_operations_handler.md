@@ -428,10 +428,11 @@ Legend: this flow is identical across all 12 tool functions, differing only in t
 
 ## 5.0 Tier 3 Review
 
-- **Reviewer:** pending
-- **Date:** pending
-- **Findings:** pending
-- **Decision:** pending human approval before T04 prompt creation (governance §1.3.6)
+- **Reviewer:** William Watson
+- **Date:** 2026-08-13
+- **Findings:** None requiring change.
+- **Decision:** Approved.
+- **Outcome:** Tier 3 baseline established for this component; T04 prompt creation authorised per governance §1.3.6.
 
 [Return to Table of Contents](<#table of contents>)
 
@@ -442,6 +443,7 @@ Legend: this flow is identical across all 12 tool functions, differing only in t
 | Version | Date | Description |
 |---|---|---|
 | 0.1 | 2026-08-13 | Tier 3 component design: MCP Tool Handler Layer, initial draft, pending human review |
+| 0.2 | 2026-08-13 | Tier 3 approved; §5.0 Tier 3 Review recorded |
 
 ---
 
