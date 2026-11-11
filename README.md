@@ -10,6 +10,7 @@ Created: 2026 August 13
 [2.0 Installation](<#2.0 installation>)
 [2.1 Development install](<#2.1 development install>)
 [2.2 De-installation](<#2.2 de-installation>)
+[2.3 Manual installation on Windows (untested)](<#2.3 manual installation on windows (untested)>)
 [3.0 Configuration](<#3.0 configuration>)
 [3.1 Claude Desktop](<#3.1 claude desktop>)
 [3.2 Claude Code](<#3.2 claude code>)
@@ -69,6 +70,27 @@ rm -rf ~/.local/share/mcp-git
 If the `MCP_GIT_HOME` environment variable was set to a non-default location during installation, remove that directory instead. Then remove the `mcp-git` entry from your MCP client configuration (§3.0).
 
 For a development install, remove the cloned repository directory in place of the above.
+
+[Return to Table of Contents](<#table of contents>)
+
+---
+
+### 2.3 Manual installation on Windows (untested)
+
+mcp-git has not been tested on Windows, and the `bin/` scripts require bash. The steps below are a manual alternative.
+
+Prerequisites: Python 3.9+ and [Git for Windows](https://git-scm.com/download/win), with `git` available on `PATH`.
+
+From a Command Prompt:
+
+```bat
+py -m venv %LOCALAPPDATA%\mcp-git\venv
+%LOCALAPPDATA%\mcp-git\venv\Scripts\pip install git+https://github.com/William12556/mcp-git@v0.1.2
+```
+
+In the MCP client configuration (§3.0), set the command to the full path of `%LOCALAPPDATA%\mcp-git\venv\Scripts\mcp-git.exe`, for example `C:\Users\<you>\AppData\Local\mcp-git\venv\Scripts\mcp-git.exe`. In `claude_desktop_config.json`, escape each backslash as `\\`.
+
+To de-install, remove `%LOCALAPPDATA%\mcp-git` and the `mcp-git` entry from the MCP client configuration.
 
 [Return to Table of Contents](<#table of contents>)
 
@@ -144,6 +166,7 @@ Every tool operates only on the repository at the `repo_path` you give it — no
 | 0.3 | 2026-08-13 | Replaced git-clone installation with the curl-piped bin/install.sh; clone retained only for §2.1 Development install |
 | 0.4 | 2026-08-13 | Added §2.2 De-installation |
 | 0.5 | 2026-08-13 | Split §3.0 Configuration into §3.1 Claude Desktop and §3.2 Claude Code |
+| 0.6 | 2026-11-11 | Added §2.3 Manual installation on Windows (untested) |
 
 ---
 
