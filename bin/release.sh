@@ -1,7 +1,7 @@
 #!/bin/bash
 # mcp-git Release Script
 # Creates a versioned GitHub release with dist artefacts.
-# Requires: gh CLI authenticated, dist/ built via build.sh
+# Requires: gh CLI authenticated, dist/ built via build.sh and wheelhouse.sh
 #
 # Usage: ./bin/release.sh
 
@@ -56,6 +56,14 @@ if [ -z "$TARBALL" ]; then
     exit 1
 fi
 
+WHEELHOUSE="$(ls dist/mcp-git-"${VERSION}"-*.zip 2>/dev/null | head -1)"
+
+if [ -z "$WHEELHOUSE" ]; then
+    echo "ERROR: No Windows wheelhouse zip for version $VERSION found in dist/"
+    echo "Run: ./bin/wheelhouse.sh"
+    exit 1
+fi
+
 # ---------------------------------------------------------------------------
 # Version sanity check: dist artefacts must match pyproject.toml
 # ---------------------------------------------------------------------------
@@ -103,7 +111,8 @@ gh release create "$TAG" \
     --notes "mcp-git $TAG" \
     --latest \
     "$WHEEL" \
-    "$TARBALL"
+    "$TARBALL" \
+    "$WHEELHOUSE"
 
 echo ""
 echo "✓ Release $TAG published"

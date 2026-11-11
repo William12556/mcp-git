@@ -79,14 +79,21 @@ For a development install, remove the cloned repository directory in place of th
 
 mcp-git has not been tested on Windows, and the `bin/` scripts require bash. The steps below are a manual alternative.
 
-Prerequisites: Python 3.9+ and [Git for Windows](https://git-scm.com/download/win), with `git` available on `PATH`.
+Prerequisites: Python 3.13 (AMD64) and [Git for Windows](https://git-scm.com/download/win), with `git` available on `PATH`.
 
-From a Command Prompt:
+Each release includes `mcp-git-<version>-win_amd64-py313.zip`, which contains the mcp-git wheel and all runtime dependency wheels. Installing from it does not contact any package index, so a pip configuration that points at a private index (for example Artifactory) is bypassed.
 
-```bat
-py -m venv %LOCALAPPDATA%\mcp-git\venv
-%LOCALAPPDATA%\mcp-git\venv\Scripts\pip install git+https://github.com/William12556/mcp-git@v0.1.2
+From PowerShell, replacing `0.1.2` with the release version:
+
+```powershell
+$v = "0.1.2"
+Invoke-WebRequest "https://github.com/William12556/mcp-git/releases/download/v$v/mcp-git-$v-win_amd64-py313.zip" -OutFile mcp-git.zip
+Expand-Archive mcp-git.zip -DestinationPath .
+py -3.13 -m venv "$env:LOCALAPPDATA\mcp-git\venv"
+& "$env:LOCALAPPDATA\mcp-git\venv\Scripts\pip.exe" install --no-index --find-links ".\mcp-git-$v-win_amd64-py313" mcp-git
 ```
+
+The zip can also be downloaded from the release page in a browser.
 
 In the MCP client configuration (§3.0), set the command to the full path of `%LOCALAPPDATA%\mcp-git\venv\Scripts\mcp-git.exe`, for example `C:\Users\<you>\AppData\Local\mcp-git\venv\Scripts\mcp-git.exe`. In `claude_desktop_config.json`, escape each backslash as `\\`.
 
@@ -167,6 +174,7 @@ Every tool operates only on the repository at the `repo_path` you give it — no
 | 0.4 | 2026-08-13 | Added §2.2 De-installation |
 | 0.5 | 2026-08-13 | Split §3.0 Configuration into §3.1 Claude Desktop and §3.2 Claude Code |
 | 0.6 | 2026-11-11 | Added §2.3 Manual installation on Windows (untested) |
+| 0.7 | 2026-11-11 | §2.3: replaced index-based pip install with offline install from the release wheelhouse zip |
 
 ---
 
